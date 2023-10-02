@@ -32,7 +32,16 @@ enum PieceType{
 interface MoveValidator{
     +validateMove(Piece piece, Position position): boolean
 }
-class PawnMovement implements MoveValidator{
+class VerticalMovement implements MoveValidator{
+    +validateMove(Piece piece, Position position): boolean
+}
+class HorizontalMovement implements MoveValidator{
+    +validateMove(Piece piece, Position position): boolean
+}
+class DiagonalMovement implements MoveValidator{
+    +validateMove(Piece piece, Position position): boolean
+}
+class Board{
 
 }
 

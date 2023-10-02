@@ -1,0 +1,4 @@
+package movement
+
+interface Movement {
+}

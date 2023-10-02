@@ -1,0 +1,4 @@
+package piece
+
+interface Piece {
+}

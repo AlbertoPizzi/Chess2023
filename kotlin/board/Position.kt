@@ -1,10 +1,10 @@
 package board
 
-class Position (val x: Int ,val y : Int) {
-    fun getX(): Int {
-        return x
+data class Position (val column: Int ,val line : Int) {
+    fun getColumn(): Int {
+        return column
     }
-    fun getY(): Int {
-        return y
+    fun getLine(): Int {
+        return line
     }
 }

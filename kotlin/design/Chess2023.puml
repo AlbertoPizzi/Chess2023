@@ -1,7 +1,5 @@
 @startuml
-interface Movable{
-    +move(MoveValidator moveValidator): Piece piece
-}
+
 class Piece implements Movable{
     -color: Color
     -type: Type
@@ -11,11 +9,11 @@ class Piece implements Movable{
     +getType(): Type
 }
 class Position{
-    -x: int
-    -y: int
+    -column: int
+    -line: int
     +Position(x: int, y: int)
-    +getX(): int
-    +getY(): int
+    +getColumn(): int
+    +getLine(): int
 }
 enum Color{
     WHITE
@@ -41,7 +39,11 @@ class HorizontalMovement implements MoveValidator{
 class DiagonalMovement implements MoveValidator{
     +validateMove(Piece piece, Position position): boolean
 }
-class Board{
+interface Board{
+    buildBoard(): void
+    getWhitePieces(): List<Piece>
+    getBlackPieces(): List<Piece>
+    getPieceAtPosition(Position position): Piece
 
 }
 

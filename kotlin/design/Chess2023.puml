@@ -44,7 +44,6 @@ interface Board{
     getWhitePieces(): List<Piece>
     getBlackPieces(): List<Piece>
     getPieceAtPosition(Position position): Piece
-
-}
+    }
 
 @enduml

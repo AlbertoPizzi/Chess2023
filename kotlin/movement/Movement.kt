@@ -11,8 +11,8 @@ data class Movement(
     val board: Board,
     val piece: Piece
 ) {
-//    fun moveTo(init: Position, final: Position) {
-//        if (movementValidator.validateMovement(init, final, board))
-//
-//    }
+    fun moveTo(init: Position, final: Position) {
+        if (movementValidator.validateMovement(init, final, board))
+            board.movePiece(init, final)
+    }
 }

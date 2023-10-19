@@ -1,4 +1,4 @@
 package movement.concretemovement
 
-class VerticalMovement {
+class EatMV {
 }

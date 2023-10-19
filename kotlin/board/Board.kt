@@ -1,11 +1,14 @@
 package board
 
-import piece.Color
 import piece.Piece
 
 interface Board {
-    fun build(positions: List<Position>):Board
-    fun getByColor(color: Color): List<Piece>
-
-    fun movePiece(init: Position, final: Position): Board
+    fun getBoardType() : BoardType
+    fun getColSize() : Int
+    fun getRowSize() : Int
+    fun getPositionMap() : Map<Position , Piece>
+    fun isInBounds(position: Position) : Boolean
+    fun getPositionByPiece(piece: Piece) : Position
+    fun getPositions() : List<Position>
+    fun getPieceByPosition(position: Position) : Piece
 }

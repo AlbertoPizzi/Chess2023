@@ -1,24 +1,52 @@
 package board
 
+import exceptions.PieceNotFoundException
 import piece.Color
 import piece.Piece
 import piece.PieceType
 
-data class RegularBoard(val board: Map<Position, Piece> ) : Board{
-    val colSize = 8
-    val rowSize = 8
-    override fun getByColor(color: Color) = board.values.filter { piece -> piece.color == color }
-    override fun movePiece(init: Position, final: Position): Board {
-        val piece = board[init] ?: throw Exception("No piece at $init")
-        val newBoard = board.toMutableMap()
-        newBoard.remove(init)
-        newBoard[final] = piece
-        return RegularBoard(newBoard)
+class RegularBoard(
+    val boardType: BoardType,
+    private val colSize: Int,
+    private val rowSize: Int,
+    private val positionMap: Map<Position, Piece>,
+    private val positionList: List<Position>
+) : Board {
+    override fun getBoardType(): BoardType {
+        return boardType
     }
-     override fun build(positions: List<Position>): Board {
-        val board = mutableMapOf<Position, Piece>()
 
-        return RegularBoard(board)
+    override fun getColSize(): Int {
+       return colSize
+    }
+
+    override fun getRowSize(): Int {
+        return rowSize
+    }
+
+    override fun getPositionMap(): Map<Position, Piece> {
+        return positionMap
+    }
+
+    override fun isInBounds(position: Position): Boolean {
+        return (position.column in 0 until colSize) && (position.row in 0 until rowSize)
+    }
+
+    override fun getPositionByPiece(piece: Piece): Position {
+        for( i in positionMap.keys){
+            if(piece == positionMap[i]){
+                return i
+            }
+        }
+        throw PieceNotFoundException("Piece not found!")
+    }
+
+    override fun getPositions(): List<Position> {
+        return positionList
+    }
+
+    override fun getPieceByPosition(position: Position): Piece {
+        return positionMap[position]!!
     }
 
 }

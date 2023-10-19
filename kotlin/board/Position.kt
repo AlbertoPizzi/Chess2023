@@ -1,3 +1,3 @@
 package board
 
-data class Position(val column: Int, val line: Int)
+data class Position(val column: Int, val row: Int)
